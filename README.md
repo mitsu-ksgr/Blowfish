@@ -1,39 +1,43 @@
-Blowfish
-========
+Blowfish CUI tool
+===================
 
-Blowfish C++ implementation
+Blowfish CUI tool.
+Fork from [Blowfish](https://github.com/h2so5/Blowfish).
 
 [![image](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
 
- * Tested on OSX (32bit/64bit)
- * ECB mode only
- * The key length must be a multiple of 8bit
- * PKCS #5 Padding
+ * Tested on Mac OS X (10.9.4 / 64bit)
 
-## Usage
 
-```cpp
-#include <iostream>
-#include <string>
+Build
+-------------------
+    $ cd Blowfish
+    $ make
 
-#include "blowfish.h"
 
-int main(int argc, const char * argv[])
-{
-    char key[] = "The quick brown fox jumps over the lazy dog.";
-    
-    Blowfish blowfish;
-    blowfish.SetKey(key);
-    
-    std::string text = "This is not a pipe.";
-    std::string encrypted, decrypted;
-    
-    blowfish.Encrypt(&encrypted, text);
-    std::cout << encrypted << std::endl;
-    
-    blowfish.Decrypt(&decrypted, encrypted);
-    std::cout << decrypted << std::endl;
-    
-    return 0;
-}
-```
+Synopsis
+-------------------
+    blowfish file_path encription_key [-o output_file_path] [-e | -d]
+ * file_path --- Path to data file you want to encrypted.
+ * encription_key --- Encryption key.
+ * -o flag --- If you want specify output-file-path than use this flag.
+ * -e, -d flag --- -e is Encrypt Mode(Default). -d is Decrypt Mode.
+
+
+Usage
+-------------------
+
+### Encryption Mode ###
+    $ blowfish datafile.dat encryption_key
+    Succeeded! "data.txt" --[Encryption(Key:encryption_key)]--> "data.txt.bfe"
+
+    $ blowfish datafile.dat encryption_key -o datafile.dat
+    Succeeded! "datafile.dat" --[Encryption(Key:encryption_key)]--> "datafile.dat"
+
+### Description Mode ###
+    $ blowfish encryptedfile.bfe encryption_key
+    Succeeded! "encryptedfile.bfe" --[Decryption(Key:encryption_key)]--> "encryptedfile.bfe.bfd"
+
+    $ blowfish encryptedfile.dat encryption_key -o encryptedfile.dat -d
+    Succeeded! "encryptedfile.dat" --[Encryption(Key:encryption_key)]--> "encryptedfile.dat"
+
