@@ -9,15 +9,18 @@ Fork from [Blowfish](https://github.com/h2so5/Blowfish).
  * Tested on Mac OS X (10.9.4 / 64bit)
 
 
-Build
+Install & Build
 -------------------
-    $ cd Blowfish
-    $ make
-
+```sh
+$ git clone https://github.com/mitsuaki-n/Blowfish
+$ cd Blowfish
+$ make
+>>> generated 'blowfish'
+```
 
 Synopsis
 -------------------
-    blowfish file_path encription_key [-o output_file_path] [-e | -d]
+blowfish file_path encription_key [-o output_file_path] [-e | -d]
  * file_path --- Path to data file you want to encrypted.
  * encription_key --- Encryption key.
  * -o flag --- If you want specify output-file-path than use this flag.
@@ -28,16 +31,19 @@ Usage
 -------------------
 
 ### Encryption Mode ###
-    $ blowfish datafile.dat encryption_key
-    Succeeded! "data.txt" --[Encryption(Key:encryption_key)]--> "data.txt.bfe"
+```sh
+$ blowfish datafile.dat encryption_key
+Succeeded! "data.txt" --[Encryption(Key:encryption_key)]--> "data.txt.bfe"
 
-    $ blowfish datafile.dat encryption_key -o datafile.dat
-    Succeeded! "datafile.dat" --[Encryption(Key:encryption_key)]--> "datafile.dat"
+$ blowfish datafile.dat encryption_key -o datafile.dat
+Succeeded! "datafile.dat" --[Encryption(Key:encryption_key)]--> "datafile.dat"
+```
 
 ### Description Mode ###
-    $ blowfish encryptedfile.bfe encryption_key
-    Succeeded! "encryptedfile.bfe" --[Decryption(Key:encryption_key)]--> "encryptedfile.bfe.bfd"
+```sh
+$ blowfish encryptedfile.bfe encryption_key
+Succeeded! "encryptedfile.bfe" --[Decryption(Key:encryption_key)]--> "encryptedfile.bfe.bfd"
 
-    $ blowfish encryptedfile.dat encryption_key -o encryptedfile.dat -d
-    Succeeded! "encryptedfile.dat" --[Encryption(Key:encryption_key)]--> "encryptedfile.dat"
-
+$ blowfish encryptedfile.dat encryption_key -o encryptedfile.dat -d
+Succeeded! "encryptedfile.dat" --[Encryption(Key:encryption_key)]--> "encryptedfile.dat"
+```
